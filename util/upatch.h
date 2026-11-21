@@ -29,8 +29,8 @@ struct upatch_host_header {
 	__u32		loader_insns_len;
 	__u32		signature_off;
 	__u32		signature_len;
-	__u32		metadata_off;
-	__u32		metadata_len;
+	__u32		reserved2;
+	__u32		reserved3;
 	__u32		data_off;
 	__u32		data_len;
 	__u32		log_buf_sz;
@@ -91,7 +91,6 @@ void upatch_close(struct upatch *u);
  */
 const void *upatch_loader(const struct upatch *u);
 const void *upatch_signature(const struct upatch *u);
-const void *upatch_metadata(const struct upatch *u);
 const void *upatch_data(const struct upatch *u);
 
 bool upatch_is_unload(const struct upatch *u);

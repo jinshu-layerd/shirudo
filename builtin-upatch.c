@@ -515,7 +515,6 @@ static int cmd_upatch_info(int argc, const char **argv)
 		json_kv_int(&e, "loader_insns_len",
 			    u.hdr.loader_insns_len);
 		json_kv_int(&e, "signature_len", u.hdr.signature_len);
-		json_kv_int(&e, "metadata_len", u.hdr.metadata_len);
 		json_kv_int(&e, "data_len", u.hdr.data_len);
 		json_kv_int(&e, "log_buf_sz", u.hdr.log_buf_sz);
 		json_kv_int(&e, "file_size", (__s64)u.map_size);
@@ -582,11 +581,6 @@ static int cmd_upatch_info(int argc, const char **argv)
 	printf("  %-22s off=%u len=%u\n", "Instructions:",
 	       u.hdr.loader_insns_off, u.hdr.loader_insns_len);
 	printf("  %-22s %u\n", "Log buffer size:", u.hdr.log_buf_sz);
-	if (u.hdr.metadata_len)
-		printf("  %-22s off=%u len=%u\n", "Metadata:",
-		       u.hdr.metadata_off, u.hdr.metadata_len);
-	else
-		printf("  %-22s (none)\n", "Metadata:");
 	if (u.hdr.data_len)
 		printf("  %-22s off=%u len=%u\n", "Data:",
 		       u.hdr.data_off, u.hdr.data_len);
